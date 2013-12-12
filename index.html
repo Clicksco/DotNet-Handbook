@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Clicksco PHP Handbook</title>
+    <title>Clicksco .NET Handbook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/custom.css" rel="stylesheet" media="screen">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="documentation col-md-9">
             <div class="jumbotron">
                 <div class="container">
                     <h1>.NET Handbook</h1>
@@ -44,91 +44,86 @@
                 </div>
             </div>
 
-            <!-- Getting started  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1>Getting started</h1>
-            </div>
+{% capture md %}
 
-            <span class="label label-default">Work in progress...</span>
+# Getting started 
+{#getting-started .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- BDD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="bdd">Behaviour Driven Development</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Behaviour Driven Development 
+{#bdd .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Communication  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="communication">Communication</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Communication 
+{#communication .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Version Control  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="version-control">Version Control</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Version Control 
+{#vcs .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Continuous Integration - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="continuous-integration">Continuous Integration</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Continuous Integration 
+{#ci .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Packages - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="packages">Packages</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Packages 
+{#packages .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Project Management - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="project-management">Project Management</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Project Management 
+{#project-management .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Coding Style  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="coding-style">Coding Style</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Coding Style 
+{#coding-style .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
 
-            <!-- Documentation - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="documentation">Documentation</h1>
-            </div>
+------------------------------------------------------------------------------------------------
 
-            <span class="label label-default">Work in progress...</span>
+# Documentation 
+{#documentation .page-header}
 
-            <hr class="docs-hr">
+Work in progress&hellip;
+{.label .label-default}
+
+------------------------------------------------------------------------------------------------
+
+{% endcapture %}
+{{ md | markdownify }}
+
 
             <!-- Team - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-            <div class="page-header">
-                <h1 id="team">The Team</h1>
-            </div>
+            <h1 id="team" class="page-header">The Team</h1>
 
             <p>
                 The below list is a quick list of the Clicksco .NET team.
@@ -175,11 +170,13 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
-		$('.page-header h1').each(function(i, e){
+		$('.page-header').each(function(i, e){
+			e.id = e.id || 'chapter' + i;
+		
 			$('<a>')
 				.attr('href', '#' + e.id)
 				.text($(e).text())
@@ -188,11 +185,7 @@
 				.appendTo('#main-navigation');
 		});
 	
-        $('body').scrollspy({ target: '#main-navigation' })
-    });
-
-    $('[data-spy="scroll"]').each(function () {
-        var $spy = $(this).scrollspy('refresh')
+        $('body').scrollspy( 'refresh' )
     });
 </script>
 </body>
