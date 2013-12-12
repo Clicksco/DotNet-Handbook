@@ -1,0 +1,199 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Clicksco PHP Handbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+
+    <style type="text/css">
+        body {
+            padding-top: 40px;
+        }
+    </style>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body data-spy="scroll" data-target="#main-navigation">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div data-spy="affix" data-offset-top="1">
+                <img class="logo" src="img/logo.png" alt="" width="250"/>
+                <hr />
+                <ul class="nav nav-pills nav-stacked" id="main-navigation"></ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>.NET Handbook</h1>
+                    <p>
+                        Our aim is to bring .NET developers together to work using the same tools and the same way. We believe that ensuring that having some best-practice and basic principles in place will play a big part in both team and personal development.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Getting started  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1>Getting started</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- BDD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="bdd">Behaviour Driven Development</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Communication  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="communication">Communication</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Version Control  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="version-control">Version Control</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Continuous Integration - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="continuous-integration">Continuous Integration</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Packages - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="packages">Packages</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Project Management - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="project-management">Project Management</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Coding Style  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="coding-style">Coding Style</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Documentation - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="documentation">Documentation</h1>
+            </div>
+
+            <span class="label label-default">Work in progress...</span>
+
+            <hr class="docs-hr">
+
+            <!-- Team - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <div class="page-header">
+                <h1 id="team">The Team</h1>
+            </div>
+
+            <p>
+                The below list is a quick list of the Clicksco .NET team.
+            </p>
+			
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th width="18"></th>
+                        <th width="240">Name</th>
+                        <th>Role</th>
+                        <th width="120">Location</th>
+                        <th width="175">Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{% assign members = site.data.members | sort: 'name' %}
+					{% for member in members %}
+					<tr>
+						<td><img src="http://www.gravatar.com/avatar/{{ member.gravatar }}?s=18" /></td>
+						<td>{{ member.name }}</td>
+						<td>{{ member.role }}</td>
+						<td>{{ member.location }}</td>
+						<td>
+                            <div class="btn-group btn-group-xs">
+							{% if member.github %}<a class="btn btn-default" href="https://github.com/{{ member.github }}">GitHub</a>{% endif %}
+							{% if member.twitter %}<a class="btn btn-default" href="https://twitter.com/{{ member.twitter }}">Twitter</a>{% endif %}
+							{% if member.geeklist %}<a class="btn btn-default" href="https://twitter.com/{{ member.geeklist }}">Geekli.st</a>{% endif %}
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+                </tbody>
+            </table>
+
+            <hr class="docs-hr">
+
+            <p>Copyright 2013 Clicksco. All rights reserved.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+		$('.page-header h1').each(function(i, e){
+			$('<a>')
+				.attr('href', '#' + e.id)
+				.text($(e).text())
+				.appendTo('<li>')
+				.parent()
+				.appendTo('#main-navigation');
+		});
+	
+        $('body').scrollspy({ target: '#main-navigation' })
+    });
+
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh')
+    });
+</script>
+</body>
+</html>

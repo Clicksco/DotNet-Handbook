@@ -1,0 +1,38 @@
+- name: James Foster
+  gravatar: 88473160fe9702f271fe3d7d5ce1ed3e
+  role: Dev
+  location: UK
+  github: jamesfoster
+  
+- name: Anish Patel
+  gravatar: a4ccf207122246fbf806e86446250f56
+  role: Dev
+  location: UK
+  twitter: anishpateluk
+  
+- name: Tony Williams
+  gravatar: 3ca8f1ee5bd1398285d9e64781c40efa
+  role: Dev
+  location: UK
+  github: tonywilliams
+  twitter: twith2sugars
+  
+- name: John Hodkinson
+  gravatar: 622c34f238c54f43446b5a1ec472da17
+  role: Dev
+  location: UK
+  
+- name: John Levett
+  gravatar: 02766291ad0f2a6584d06a8f13b98969
+  role: Dev
+  location: UK
+  
+- name: Liam Russel
+  gravatar: bd735ce7434bc0510e6a4fbef4cfc08d
+  role: Dev
+  location: UK
+  
+- name: Grahame Horner
+  gravatar: 579c5f8502bcebbb71b0530e39360dc9
+  role: Dev
+  location: UK
