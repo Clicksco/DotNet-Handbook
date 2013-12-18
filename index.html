@@ -44,194 +44,22 @@
                 </div>
             </div>
 
-{% capture md %}
+{% for doc in site.pages %}
+	{% assign parts = doc.url | split:'/' %}
+	{% if parts[1] == 'docs' %}
 
-# Getting started 
-{#getting-started .page-header}
+<h1 class="page-header" id="{{ doc.id }}">{{ doc.title }}</h1>
 
-Before you dive in there's a few things you're going to need. There are also some bits and pieces that aren't necessary but are going to make your life a lot easier.
+{{ doc.content }}
 
-* **Visual Studio** *(required)*{.label .label-info}
+{% if doc.wip %}
+<span class="label label-default">Work in progress&hellip;</span>
+{% endif %}
 
-	No brainer&hellip;
-	
-* [**Resharper**](http://jetbrains.com/resharper) *(highly recommended)*{.label .label-info}
+<hr />
 
-	The one stop shop for code analysis, refactoring, and code completion. Comes with a built in test runner, live templates, and introduces a ton of useful keyboard shortcuts for navigation. If you want a copy we'll furnish you with a license.
-	
-* [**chocolatey**](http://chocolatey.org/) *(highly recommended)*{.label .label-info}
-
-	This is a package manager for machine level applications. With a wave of your console you can install most of your favourite apps including the tools mentioned below.
-	
-	For example, `chocolatey install skype` (or `cinst skype` for short), will - you've guessed it - install skype.
-
-* [**git**](http://git-scm.com) *(required)*{.label .label-info}
-
-	We use git for [version control](#vcs) which means you're going need this to grab the source code.
-	
-	With chocolatey installed simple type `cinst git`
-
-*	[**TortoiseGit**](https://code.google.com/p/tortoisegit/) /
-	[**SourceTree**](http://www.sourcetreeapp.com/)
-	*(recommended)*{.label .label-info}
-
-	A GUI for managing git repositories. Although you can use the command line, they make working with git significantly easier. Each have their merits. Choose one, or both or neither.
-
-		cinst tortoisegit
-		cinst sourcetree
-
-* **KDiff3** *(recommended)*{.label .label-info}
-
-	A 3-way merge and diff tool. Miles better than many other similar tools out there.
-
-* **NHProfiler** *(recommended)*{.label .label-info}
-
-	If the project you're working on uses NHibernate you'll want to checkout NHProfiler
-
-* [**nCurnch**](http://nchrunch.net) *(recommended)*{.label .label-info}
-
-	Test as you type! WAT? Yes that's right. It compiles your code and runs your tests as you type. It displays indicators next to your code so you can see what code is covered by passing\failing tests and how long each line took to execute.
-	
-* [**TeamCity**](http://jetbrains.com/teamcity) *(recommended)*{.label .label-info}
-
-	We use TeamCity for [continuous integration](#ci). Although it's not necessary to run TeamCity on your local machine doing so would allow you to monitor your local repositories and be confident when pushing your changes.
-
-------------------------------------------------------------------------------------------------
-
-# Behaviour Driven Development 
-{#bdd .page-header}
-
-In BDD the features/behaviours of a system are expressed through "stories" which are broken down into "scenarios". Each scenario describes a single application of a behaviour and relates to a single automated test.
-
-The stories and scenarios are written in the terminology of the problem domain, allowing the business owners and developers to dicuss and reason about the behaviour of the system in a common ubiquitous language.
-
-We use [SpecFlow](http://specflow.org) to execute the scenarios as automated tests.
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Communication 
-{#communication .page-header}
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Version Control 
-{#vcs .page-header}
-
-All projects must be version controlled. At Clicksco we use [Git](http://git-scm.com).
-
-## Workflow
-
-The workflow used may vary project to project. The popular ones are:
-
-* [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) which prescribes a very structured approach to working with git.
-* [GitHub Flow](http://scottchacon.com/2011/08/31/github-flow.html) which is much simpler.
-
-Choose the one right for your project.
-
-------------------------------------------------------------------------------------------------
-
-# Continuous Integration 
-{#ci .page-header}
-
-One of the first things to do on a project should be to setup continuous integration for it. Once you've got a Git repository and a solution with some projects, it's incredibly easy to create a new project on TeamCity which will build the solution, and run the tests every time you commit to the repository.
-
-A continuous integration server can do a lot more, like notify you when the build breaks, publish the build artefacts, host NuGet packages, even run custom scripts.
-
-Once the continuous integration server has done its job, there should only be one step left. Deploy.
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Packages 
-{#packages .page-header}
-
-Before writing a ton of code, check that it hasn't already been done before. NuGet is the place to go to find libraries and tools built by the .NET community.
-
-Always favour packages built by the authors of the library. If you're not sure, write a proof of concept app with the package and if it suits the purpose you've just saved yourself the time of writing it yourself!
-
-## Internal packages
-
-When writing common libraries, the CI for those projects should be configured to output a NuGet package. These packages will be hosted within TeamCity's own NuGet feed. You can add that feed on your machine with the following command:
-
-	nuget sources add -Name TeamCity -Source [url]
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Project Management 
-{#project-management .page-header}
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Coding Style 
-{#coding-style .page-header}
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-# Documentation 
-{#documentation .page-header}
-
-Work in progress&hellip;
-{.label .label-default}
-
-------------------------------------------------------------------------------------------------
-
-{% endcapture %}
-{{ md | markdownify }}
-
-            <h1 id="team" class="page-header">The Team</h1>
-
-            <p>
-                The below list is a quick list of the Clicksco .NET team.
-            </p>
-			
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th width="18"></th>
-                        <th width="240">Name</th>
-                        <th>Role</th>
-                        <th width="120">Location</th>
-                        <th width="175">Links</th>
-                    </tr>
-                </thead>
-                <tbody>
-					{% assign members = site.data.members | sort: 'name' %}
-					{% for member in members %}
-					<tr>
-						<td><img src="http://www.gravatar.com/avatar/{{ member.gravatar }}?s=18" /></td>
-						<td>{{ member.name }}</td>
-						<td>{{ member.role }}</td>
-						<td>{{ member.location }}</td>
-						<td>
-                            <div class="btn-group btn-group-xs">
-							{% if member.github %}<a class="btn btn-default" href="https://github.com/{{ member.github }}">GitHub</a>{% endif %}
-							{% if member.twitter %}<a class="btn btn-default" href="https://twitter.com/{{ member.twitter }}">Twitter</a>{% endif %}
-							{% if member.geeklist %}<a class="btn btn-default" href="https://twitter.com/{{ member.geeklist }}">Geekli.st</a>{% endif %}
-							</div>
-						</td>
-					</tr>
-					{% endfor %}
-                </tbody>
-            </table>
-
-            <hr class="docs-hr">
+	{% endif %}
+{% endfor %}
 
             <p>Copyright 2013 Clicksco. All rights reserved.</p>
         </div>

@@ -1,0 +1,38 @@
+---
+title : The Team
+id    : team
+---
+
+<p>
+	The Clicksco .NET team.
+</p>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th width="18"></th>
+			<th width="240">Name</th>
+			<th>Role</th>
+			<th width="120">Location</th>
+			<th width="175">Links</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% assign members = site.data.members | sort: 'name' %}
+		{% for member in members %}
+		<tr>
+			<td><img src="http://www.gravatar.com/avatar/{{ member.gravatar }}?s=18" /></td>
+			<td>{{ member.name }}</td>
+			<td>{{ member.role }}</td>
+			<td>{{ member.location }}</td>
+			<td>
+				<div class="btn-group btn-group-xs">
+				{% if member.github %}<a class="btn btn-default" href="https://github.com/{{ member.github }}">GitHub</a>{% endif %}
+				{% if member.twitter %}<a class="btn btn-default" href="https://twitter.com/{{ member.twitter }}">Twitter</a>{% endif %}
+				{% if member.geeklist %}<a class="btn btn-default" href="https://twitter.com/{{ member.geeklist }}">Geekli.st</a>{% endif %}
+				</div>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
